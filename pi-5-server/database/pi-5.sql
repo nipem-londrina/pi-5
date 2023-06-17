@@ -1,55 +1,66 @@
-CREATE TABLE `Partidas` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`jogador1` INT NOT NULL,
-	`jogador2` INT NOT NULL,
-	`resultado` smallint NOT NULL,
-	`jogador1elo` INT NOT NULL,
-	`jogador2elo` INT NOT NULL,
-	PRIMARY KEY (`id`)
+CREATE TABLE `partida`
+(
+    `id`          INT      NOT NULL AUTO_INCREMENT,
+    `jogador1`    INT      NOT NULL,
+    `jogador2`    INT      NOT NULL,
+    `resultado`   SMALLINT NOT NULL,
+    `jogador1elo` INT      NOT NULL,
+    `jogador2elo` INT      NOT NULL,
+    PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `Jogador` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`idUsuario` INT NOT NULL,
-	`idJogo` INT NOT NULL,
-	`nome` varchar NOT NULL UNIQUE,
-	`elo` INT NOT NULL,
-	`equipe` INT NOT NULL,
-	PRIMARY KEY (`id`)
+CREATE TABLE `jogador`
+(
+    `id`        INT          NOT NULL AUTO_INCREMENT,
+    `idUsuario` INT          NOT NULL,
+    `idJogo`    INT          NOT NULL,
+    `nome`      VARCHAR(255) NOT NULL UNIQUE,
+    `elo`       INT          NOT NULL,
+    `equipe`    INT          NOT NULL,
+    PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `Equipe` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`nome` varchar NOT NULL,
-	`descricao` varchar NOT NULL,
-	`jogo` INT NOT NULL,
-	PRIMARY KEY (`id`)
+CREATE TABLE `equipe`
+(
+    `id`        INT          NOT NULL AUTO_INCREMENT,
+    `nome`      VARCHAR(255) NOT NULL,
+    `descricao` VARCHAR(255) NOT NULL,
+    `jogo`      INT          NOT NULL,
+    PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `Jogo` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`nome` varchar NOT NULL,
-	PRIMARY KEY (`id`)
+CREATE TABLE `jogo`
+(
+    `id`   INT          NOT NULL AUTO_INCREMENT,
+    `nome` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `Usuario` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`login` INT NOT NULL,
-	`senha` INT NOT NULL,
-	PRIMARY KEY (`id`)
+CREATE TABLE `usuario`
+(
+    `id`    INT          NOT NULL AUTO_INCREMENT,
+    `login` VARCHAR(255) NOT NULL,
+    `senha` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`id`)
 );
 
-ALTER TABLE `Partidas` ADD CONSTRAINT `Partidas_fk0` FOREIGN KEY (`jogador1`) REFERENCES `Jogador`(`id`);
+ALTER TABLE `partida`
+    ADD CONSTRAINT `partida_fk0` FOREIGN KEY (`jogador1`) REFERENCES `jogador` (`id`);
 
-ALTER TABLE `Partidas` ADD CONSTRAINT `Partidas_fk1` FOREIGN KEY (`jogador2`) REFERENCES `Jogador`(`id`);
+ALTER TABLE `partida`
+    ADD CONSTRAINT `partida_fk1` FOREIGN KEY (`jogador2`) REFERENCES `jogador` (`id`);
 
-ALTER TABLE `Jogador` ADD CONSTRAINT `Jogador_fk0` FOREIGN KEY (`idUsuario`) REFERENCES `Usuario`(`id`);
+ALTER TABLE `jogador`
+    ADD CONSTRAINT `jogador_fk0` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`id`);
 
-ALTER TABLE `Jogador` ADD CONSTRAINT `Jogador_fk1` FOREIGN KEY (`idJogo`) REFERENCES `Jogo`(`id`);
+ALTER TABLE `jogador`
+    ADD CONSTRAINT `jogador_fk1` FOREIGN KEY (`idJogo`) REFERENCES `jogo` (`id`);
 
-ALTER TABLE `Jogador` ADD CONSTRAINT `Jogador_fk2` FOREIGN KEY (`equipe`) REFERENCES `Equipe`(`id`);
+ALTER TABLE `jogador`
+    ADD CONSTRAINT `jogador_fk2` FOREIGN KEY (`equipe`) REFERENCES `equipe` (`id`);
 
-ALTER TABLE `Equipe` ADD CONSTRAINT `Equipe_fk0` FOREIGN KEY (`jogo`) REFERENCES `Jogo`(`id`);
+ALTER TABLE `equipe`
+    ADD CONSTRAINT `equipe_fk0` FOREIGN KEY (`jogo`) REFERENCES `jogo` (`id`);
 
 
 
