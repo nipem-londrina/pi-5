@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class Jogador {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int idUsuario;
     private int idJogo;
