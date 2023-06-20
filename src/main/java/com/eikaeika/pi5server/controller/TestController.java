@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -32,7 +33,7 @@ public class TestController {
     }
 
     @GetMapping(path = "/all")
-    Iterable<Usuario> getAllUsuarios() {
-        return usuarioRepository.findAll();
+    List<Usuario> getAllUsuarios() {
+        return (List<Usuario>) usuarioRepository.findAll();
     }
 }

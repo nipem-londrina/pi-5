@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface JogoRepository extends CrudRepository<Jogo, Integer> {
-    List<Jogo> findByOrderByNome();
-    List<Jogo> findByNomeContainingIgnoreCaseOrderByNome(String nome);
+    List<Jogo> findAllByOrderByNome();
+    List<Jogo> findAllByNomeContainingIgnoreCaseOrderByNome(String nome);
 }
