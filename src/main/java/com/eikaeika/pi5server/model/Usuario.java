@@ -1,9 +1,9 @@
 package com.eikaeika.pi5server.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import lombok.Data;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -16,7 +16,7 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String login;
-    private String senha;
+    private String hash;
 
     public Usuario encodeSenha() {
         this.setSenha(encodeSenha(this.getSenha()));

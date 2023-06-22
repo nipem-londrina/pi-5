@@ -40,7 +40,7 @@ CREATE TABLE `usuario`
 (
     `id`    INT          NOT NULL AUTO_INCREMENT,
     `login` VARCHAR(255) NOT NULL,
-    `senha` VARCHAR(255) NOT NULL,
+    `hash` VARCHAR(60) NOT NULL,
     PRIMARY KEY (`id`)
 );
 
