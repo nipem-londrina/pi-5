@@ -12,7 +12,7 @@ import javax.persistence.Id;
 public class Partida {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private int jogador1;
     private int jogador2;
     private short resultado;

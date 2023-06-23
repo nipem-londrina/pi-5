@@ -9,10 +9,9 @@ import javax.persistence.*;
 public class Jogador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private int idusuario;
     private int idjogo;
     private String nome;
     private int elo;
-    private int equipe;
 }
