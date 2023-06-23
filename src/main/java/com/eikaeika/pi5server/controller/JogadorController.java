@@ -25,6 +25,7 @@ public class JogadorController {
         return repository.findById(id)
                 .orElse(null);
     }
+
     @GetMapping
     List<Jogador> find(@RequestParam(required = false) String nome) {
         if (nome == null) return repository.findAllByOrderByNome();

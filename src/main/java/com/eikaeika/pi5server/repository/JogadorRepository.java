@@ -9,5 +9,6 @@ import java.util.List;
 @Repository
 public interface JogadorRepository extends CrudRepository<Jogador, Integer> {
     List<Jogador> findAllByOrderByNome();
+
     List<Jogador> findAllByNomeContainingIgnoreCaseOrderByNome(String nome);
 }

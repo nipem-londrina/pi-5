@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -25,11 +23,6 @@ public class TestController {
         data.put("key1", "value1");
         data.put("key2", "value2");
         return new ResponseEntity<>(data, HttpStatus.OK);
-    }
-
-    @PostMapping("/test/usuarios")
-    Usuario cadastrar(@RequestBody Usuario usuario) {
-        return usuarioRepository.save(usuario.encodeSenha());
     }
 
     @GetMapping(path = "/all")
