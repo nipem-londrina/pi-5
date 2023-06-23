@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.NonNull;
 
 @Data
-public class UsuarioDto {
+public class CadastroDto {
     @NonNull
     private String email;
     @NonNull

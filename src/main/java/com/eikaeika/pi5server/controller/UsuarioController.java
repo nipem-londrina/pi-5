@@ -1,6 +1,6 @@
 package com.eikaeika.pi5server.controller;
 
-import com.eikaeika.pi5server.dto.UsuarioDto;
+import com.eikaeika.pi5server.dto.CadastroDto;
 import com.eikaeika.pi5server.model.Usuario;
 import com.eikaeika.pi5server.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +17,11 @@ public class UsuarioController {
     private PasswordEncoder encoder;
 
     @PostMapping("/cadastrar")
-    void cadastrar(@RequestBody UsuarioDto usuarioDto) {
-        if (!usuarioDto.getSenha().equals(usuarioDto.getConfirmacao())) throw new IllegalArgumentException();
+    void cadastrar(@RequestBody CadastroDto dto) {
+        if (!dto.getSenha().equals(dto.getConfirmacao())) throw new IllegalArgumentException();
         repository.save(new Usuario(
-                usuarioDto.getEmail(),
-                encoder.encode(usuarioDto.getSenha())
+                dto.getEmail(),
+                encoder.encode(dto.getSenha())
         ));
     }
 }
