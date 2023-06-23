@@ -19,7 +19,7 @@ public class Usuario {
     private String hash;
 
     public Usuario encodeSenha() {
-        this.setSenha(encodeSenha(this.getSenha()));
+        this.setHash(encodeSenha(this.getHash()));
         return this;
     }
 
