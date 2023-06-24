@@ -4,8 +4,8 @@ CREATE TABLE `partida`
     `jogador1`    INT      NOT NULL,
     `jogador2`    INT      NOT NULL,
     `resultado`   SMALLINT NOT NULL,
-    `jogador1elo` INT      NOT NULL,
-    `jogador2elo` INT      NOT NULL,
+    `jogador1elo` DECIMAL  NOT NULL,
+    `jogador2elo` DECIMAL  NOT NULL,
     PRIMARY KEY (`id`)
 );
 
@@ -15,7 +15,7 @@ CREATE TABLE `jogador`
     `idUsuario` INT          NOT NULL,
     `idJogo`    INT          NOT NULL,
     `nome`      VARCHAR(255) NOT NULL UNIQUE,
-    `elo`       INT          NOT NULL,
+    `elo`       DECIMAL      NOT NULL,
     PRIMARY KEY (`id`)
 );
 
@@ -30,7 +30,7 @@ CREATE TABLE `usuario`
 (
     `id`    INT          NOT NULL AUTO_INCREMENT,
     `login` VARCHAR(255) NOT NULL,
-    `hash` VARCHAR(60) NOT NULL,
+    `hash`  VARCHAR(60)  NOT NULL,
     PRIMARY KEY (`id`)
 );
 

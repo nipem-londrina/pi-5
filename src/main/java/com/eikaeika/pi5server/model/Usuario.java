@@ -17,7 +17,7 @@ import javax.persistence.Id;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Long;
+    private int id;
     @NonNull
     private String login;
     @NonNull

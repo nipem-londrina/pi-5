@@ -12,6 +12,6 @@ import javax.persistence.Id;
 public class Jogo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String nome;
 }

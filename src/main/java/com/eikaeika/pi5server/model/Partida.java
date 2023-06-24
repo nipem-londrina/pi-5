@@ -1,6 +1,9 @@
 package com.eikaeika.pi5server.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,13 +12,20 @@ import javax.persistence.Id;
 
 @Entity
 @Data
+@NoArgsConstructor(force = true)
+@RequiredArgsConstructor
 public class Partida {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
+    @NonNull
     private int jogador1;
+    @NonNull
     private int jogador2;
+    @NonNull
     private short resultado;
-    private int jogador1elo;
-    private int jogador2elo;
+    @NonNull
+    private double jogador1elo;
+    @NonNull
+    private double jogador2elo;
 }
