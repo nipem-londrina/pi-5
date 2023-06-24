@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * @author Erich Knoor
+ */
 @RestController
 @RequestMapping("/api/v1/jogo/{jogo}/jogador")
 public class JogadorController {

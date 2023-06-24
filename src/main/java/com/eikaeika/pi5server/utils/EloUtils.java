@@ -2,6 +2,9 @@ package com.eikaeika.pi5server.utils;
 
 import com.eikaeika.pi5server.model.Partida;
 
+/**
+ * @author Erich Knoor
+ */
 public class EloUtils {
     public static final int FATOR_ESCALA = 32;
     public static final int FATOR_TRANSFORMACAO = 400;

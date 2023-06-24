@@ -5,6 +5,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+/**
+ * @author Erich Knoor
+ */
 @Repository
 public interface UsuarioRepository extends CrudRepository<Usuario, Integer> {
     Usuario findByLogin(String login);

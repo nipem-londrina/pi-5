@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * @author Erich Knoor
+ */
 @Repository
 public interface PartidaRepository extends CrudRepository<Partida, Integer> {
     List<Partida> findAllByJogador1OrJogador2(int jogador1, int jogador2);

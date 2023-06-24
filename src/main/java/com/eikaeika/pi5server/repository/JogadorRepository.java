@@ -7,6 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * @author Erich Knoor
+ */
 @Repository
 public interface JogadorRepository extends CrudRepository<Jogador, Integer> {
     List<Jogador> findAllByIdjogoOrderByNome(int idJogo);

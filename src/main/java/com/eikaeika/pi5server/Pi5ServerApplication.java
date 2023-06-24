@@ -3,6 +3,9 @@ package com.eikaeika.pi5server;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author Erich Knoor
+ */
 @SpringBootApplication
 public class Pi5ServerApplication {
 

@@ -10,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * @author Erich Knoor
+ */
 @Entity
 @Data
 @NoArgsConstructor(force = true)
