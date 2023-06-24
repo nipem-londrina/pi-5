@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, TouchableOpacityBase, View } from 'react-native';
+import { ActivityIndicator, Alert, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, TouchableOpacityBase, View } from 'react-native';
 
 
 const App = () => {
@@ -8,13 +8,25 @@ const App = () => {
   const [val, setVal] = useState(0); 
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [confrimaSenha, setConfirmaSenha] = useState('');
+
+  const onPress = () => 
+  {
+      if(senha == confrimaSenha){
+         Alert.alert("Cadastro realizado com sucesso");
+      } 
+      else{
+         Alert.alert("As senhas não são iguais");
+      }
+   }
+   
 
   return (
 
     <View style={styles.container}>
 
-      <Text style={styles.titulo}>EloRank</Text>
-
+      <Text style={styles.titulo}>Preencha os{"\n"}Campos</Text>
+      <Text>{'\n\n\n\n\n\n\n\n\n\n\n'}</Text>
       <TextInput
         style={styles.entradaDeDados}
         onChangeText={setEmail}
@@ -30,28 +42,33 @@ const App = () => {
         secureTextEntry={true}>  
       </TextInput>
 
+      <TextInput
+        style={styles.entradaDeDados}
+        onChangeText={setConfirmaSenha}
+        value={confrimaSenha}
+        placeholder='Confirme a Senha'
+        secureTextEntry={true}>  
+      </TextInput>
+
       <Text>{'\n\n\n'}</Text>
 
-      <TouchableOpacity>
-        <Text style={styles.botao}>LOGIN</Text>
+      <TouchableOpacity onPress={onPress}>
+        <Text style={styles.botao} >CADASTRAR</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity>
-        <Text style={styles.cadastrese}>CADASTRE-SE</Text>
-      </TouchableOpacity>
       <StatusBar style="auto" />
     </View>
   );
 }
 
-
+export default App;
 
 const styles = StyleSheet.create({
   titulo:{
-    fontSize: 40,
-    marginBottom: 250,
+    fontSize: 25,
     color: "white",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    textAlign: "center"
   },
 
   container: {
@@ -74,6 +91,11 @@ const styles = StyleSheet.create({
    
   },
 
+  contador:{
+    fontSize: 32,
+    fontWeight: 'bold',
+  },
+
   botao:{
     fontSize: 22,
     backgroundColor: "#f75210",
@@ -94,5 +116,3 @@ const styles = StyleSheet.create({
   }
   
 });
-
-export default App;
