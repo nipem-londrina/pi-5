@@ -18,3 +18,6 @@ web-build/
 
 # VSCode settings
 **/.vscode/settings.json
+
+# Environment
+*.env

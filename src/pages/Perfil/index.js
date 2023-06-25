@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import base64 from 'base-64';
 import {
    SafeAreaView,
    Text,
@@ -9,51 +9,47 @@ import {
    TextInput,
    TouchableOpacity
 } from 'react-native';
+import { SERVER_ADDRESS } from '@env';
 
 
 
 export default function App() {
+   // informações que o usuário oferece
+   const username = "erich@email.com"
+   const password = "coisa"
+   const jogo = 1;
 
-   const data = [
-      {
-         id: 1,
-         jogador1: "Chico",
-         pontos: "32",
-         jogador2: "Erich",
-         resultado: "Vitória"
-      },
-      {
-         id: 2,
-         jogador1: "Chico",
-         pontos: "-32",
-         jogador2: "Erich",
-         resultado: "Derrota"
-      },{
-         id: 3,
-         jogador1: "Chico",
-         pontos: "-30",
-         jogador2: "Erich",
-         resultado: "Derrota"
-      },{
-         id: 4,
-         jogador1: "Chico",
-         pontos: "31",
-         jogador2: "Erich",
-         resultado: "Vitória"
-      },{
-         id: 5,
-         jogador1: "Chico",
-         pontos: "35",
-         jogador2: "Erich",
-         resultado: "Vitória"
-      },
-   ]
-   
-   const nick = "ChicoGameplay";
-   const pontuacao = 1200;
+   // coisas que precisa pra pagina funcionar
+   const auth = { 'Authorization': `Basic ` + base64.encode(`${username}:${password}`) };
+   const onPress = () => { };
 
-   const onPress = () => {};
+   // variaveis da tela
+   const [nick, setNick] = useState('');
+   const [pontuacao, setPontuacao] = useState('');
+   const [data, setData] = useState([]);
 
+   // chamada ao servidor
+   useEffect(() => {
+      fetch(`http://${SERVER_ADDRESS}/api/v1/jogo/${jogo}/jogador/me`, { headers: auth })
+         .then(res => res.json())
+         .then(jogador => {
+            setNick(jogador.nome)
+            setPontuacao(jogador.elo)
+            return jogador.id
+         })
+         .then(id => fetch(`http://${SERVER_ADDRESS}/api/v1/jogo/${jogo}/partida/jogador/${id}`, { headers: auth }))
+         .then(res => res.json())
+         .then(partidas => setData(partidas))
+         .catch(e => {
+            console.error(e)
+            // informações teste que aparecem se não houver conexão
+            setNick("ChicoGameplay")
+            setPontuacao(1200)
+            setData([{ id: 4, jogador: "ChicoGamer", adversario: "Erich Knoor", resultado: "Derrota", jogadorElo: 1000.0, adversarioElo: 1000.0 }, { id: 8, jogador: "ChicoGamer", adversario: "Erich Knoor", resultado: "Derrota", jogadorElo: 900.0, adversarioElo: 1100.0 }, { id: 15, jogador: "ChicoGamer", adversario: "Erich Knoor", resultado: "Vitória", jogadorElo: 1000.0, adversarioElo: 1000.0 }, { id: 16, jogador: "ChicoGamer", adversario: "Erich Knoor", resultado: "Vitória", jogadorElo: 1100.0, adversarioElo: 900.0 }, { id: 24, jogador: "ChicoGamer", adversario: "Erich Knoor", resultado: "Derrota", jogadorElo: 1000.0, adversarioElo: 1000.0 }])
+         })
+   }, []);
+
+   // tela
    return (
 
       <SafeAreaView style={{ flex: 1 }}>
@@ -84,15 +80,14 @@ export default function App() {
                   <TouchableOpacity>
                      <View style={styles.itemLista}>
                         <Text style={styles.resultado}>{item.resultado}</Text>
-
-   
-                        <Text style={styles.jogador1Estilo}>{item.jogador1}</Text>
-                        <Text style={styles.pontosEstilo}>{item.pontos}</Text> 
-                        <Text style={styles.jogador2Estilo}>{item.jogador2}</Text>
+                        <Text style={styles.jogador1Estilo}>{item.jogador}</Text>
+                        <Text style={styles.jogador1Estilo}>({item.jogadorElo})</Text>
+                        <Text style={styles.jogador2Estilo}>{item.adversario}</Text>
+                        <Text style={styles.jogador2Estilo}>({item.adversarioElo})</Text>
                      </View>
                   </TouchableOpacity>
-        )}
-      />
+               )}
+            />
          </View>
       </SafeAreaView>
    );
@@ -182,110 +177,3 @@ const styles = StyleSheet.create({
       fontSize: 18
    }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* const App = () => {
-  const [search, setSearch] = useState('');
-  const [filteredData, setFilteredData] = useState([]);
-  const [masterData, setMasterData] = useState([]);
-
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/todos')
-      .then((response) => response.json())
-      .then((responseJson) => {
-        setFilteredData(responseJson);
-        setMasterData(responseJson);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
-
-  const searchFilter = (text) => {
-    if (text) {
-      const newData = masterData.filter(
-        function (item) {
-          if (item.title) {
-            const itemData = item.title.toUpperCase();
-            const textData = text.toUpperCase();
-            return itemData.indexOf(textData) > -1;
-          }
-      });
-      setFilteredData(newData);
-    } else {
-      setFilteredData(masterData);
-    }
-    setSearch(text);
-  };
-
-  const ItemView = ({item}) => {
-    return (
-      <Text
-        style={styles.itemStyle}
-        onPress={() => getItem(item)}>
-        {item.id}
-        {' - '}
-        {item.title.toUpperCase()}
-      </Text>
-    );
-  };
-
-  const getItem = (item) => {
-    alert('Id : ' + item.id + '\n\nTarefa : ' + item.title );
-  };
-
-  return (
-    <SafeAreaView style={{flex: 1}}>
-      <View style={styles.container}>
-        <TextInput
-          style={styles.textInputStyle}
-          onChangeText={(text) => searchFilter(text)}
-          value={search}
-          underlineColorAndroid="transparent"
-          placeholder="Procure Aqui"
-        />
-        <FlatList
-          data={filteredData}
-          keyExtractor={item => item.id}
-          renderItem={ItemView}
-        />
-      </View>
-    </SafeAreaView>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 40,
-    backgroundColor: 'white',
-  },
-  itemStyle: {
-    backgroundColor: '#0066CC',
-    padding: 10,
-    marginVertical: 8,
-    marginHorizontal: 10,
-    color: 'white',
-  },
-  textInputStyle: {
-    height: 40,
-    borderWidth: 1,
-    paddingLeft: 20,
-    margin: 5,
-    borderColor: '#0066CC',
-  },
-});
- */
-/* export default App; */
