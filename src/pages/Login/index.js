@@ -9,6 +9,10 @@ export default function Login({ navigation }) {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
+  function handleLogin() {
+    navigation.navigate('ListaJogosJogador', { username: email, password: senha })
+  }
+
   return (
 
     <View style={styles.container}>
@@ -35,7 +39,7 @@ export default function Login({ navigation }) {
       <TouchableOpacity>
         <Text
           style={styles.botao}
-          onPress={() => navigation.navigate('Perfil')}
+          onPress={handleLogin}
         >LOGIN</Text>
       </TouchableOpacity>
 
