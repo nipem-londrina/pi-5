@@ -22,7 +22,7 @@ export default function Login({ navigation }) {
         onChangeText={setEmail}
         value={email}
         placeholderTextColor={'grey'}
-        placeholder='Digite seu email'>
+        placeholder='Email'>
       </TextInput>
 
       <TextInput
@@ -30,7 +30,7 @@ export default function Login({ navigation }) {
         onChangeText={setSenha}
         value={senha}
         placeholderTextColor={'grey'}
-        placeholder='Digite a senha'
+        placeholder='Senha'
         secureTextEntry={true}>
       </TextInput>
 
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     width: "80%",
     alignItems: "center",
-    textAlign: 'center',
+    //textAlign: 'center',
     margin: 10,
     color: 'white',
     borderStyle: 'solid',

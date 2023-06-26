@@ -35,14 +35,14 @@ export default function Cadastro() {
 
     <View style={styles.container}>
 
-      <Text style={styles.titulo}>Preencha os{"\n"}Campos</Text>
+      <Text style={styles.titulo}>Cadastro</Text>
       <Text>{'\n\n\n\n\n\n\n\n\n\n\n'}</Text>
       <TextInput
         style={styles.entradaDeDados}
         onChangeText={setEmail}
         value={email}
         placeholderTextColor={'grey'}
-        placeholder='Digite seu email'>
+        placeholder='Email'>
       </TextInput>
 
       <TextInput
@@ -50,7 +50,7 @@ export default function Cadastro() {
         onChangeText={setSenha}
         value={senha}
         placeholderTextColor={'grey'}
-        placeholder='Digite a Senha'
+        placeholder='Senha'
         secureTextEntry={true}>
       </TextInput>
 
@@ -59,7 +59,7 @@ export default function Cadastro() {
         onChangeText={setConfirmaSenha}
         value={confrimaSenha}
         placeholderTextColor={'grey'}
-        placeholder='Confirme a Senha'
+        placeholder='Senha'
         secureTextEntry={true}>
       </TextInput>
 
@@ -98,7 +98,6 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     width: "80%",
     alignItems: "center",
-    textAlign: 'center',
     margin: 10,
     color: 'white',
     borderStyle: 'solid',

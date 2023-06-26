@@ -7,12 +7,13 @@ import {
   View,
   FlatList,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  Alert
 } from 'react-native';
 import { SERVER_ADDRESS } from '@env';
 
 
-export default function ListaJogos({ navigation, route }) {
+export default function ListaJogos({ route }) {
   const { username, password } = route.params;
   const auth = { 'Authorization': `Basic ` + base64.encode(`${username}:${password}`) };
 
@@ -28,7 +29,7 @@ export default function ListaJogos({ navigation, route }) {
       })
   }, [])
 
-  const handleNovoJogo = (jogo) => {
+  function handleNovoJogo(jogo) {
     fetch(`http://${SERVER_ADDRESS}/api/v1/jogo/${jogo}/jogador/${nick}`, {
       method: 'POST',
       headers: auth
@@ -42,7 +43,7 @@ export default function ListaJogos({ navigation, route }) {
     <SafeAreaView style={{ flex: 1 }}>
 
       <View style={styles.container}>
-        <Text style={styles.titulo}>Informe seu nick para o jogo selecionado</Text>
+        <Text style={styles.titulo}>Escolha um jogo para adicionar</Text>
         <Text>{'\n'}</Text>
         <TextInput
           style={styles.styleBuscarJogador}
@@ -53,6 +54,7 @@ export default function ListaJogos({ navigation, route }) {
         />
         <Text>{'\n\n'}</Text>
         <FlatList
+          style={styles.lista}
           data={data}
           keyExtractor={item => item.id}
           renderItem={({ item }) => (
@@ -81,6 +83,9 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     textAlign: 'center'
   },
+  lista: {
+    width: "80%"
+  },
   itemLista: {
     marginTop: 10,
     padding: 20,
@@ -101,10 +106,10 @@ const styles = StyleSheet.create({
     paddingRight: 20,
     margin: 5,
     borderColor: '#f75210',
-    //backgroundColor: "white",
     color: 'white',
     borderStyle: 'solid',
     borderWidth: 3,
-    borderRadius: 15
+    borderRadius: 15,
+    width: "80%"
   }
 });
