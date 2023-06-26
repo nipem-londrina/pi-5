@@ -13,7 +13,7 @@ import { SERVER_ADDRESS } from '@env';
 
 
 
-export default function App() {
+export default function Perfil() {
    // informações que o usuário oferece
    const username = "erich@email.com"
    const password = "coisa"

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, TouchableOpacityBase, View } from 'react-native';
 
 
-const App = () => {
+export default function Login({ navigation }) {
   
   const [val, setVal] = useState(0); 
   const [email, setEmail] = useState('');
@@ -33,7 +33,10 @@ const App = () => {
       <Text>{'\n\n\n'}</Text>
 
       <TouchableOpacity>
-        <Text style={styles.botao}>LOGIN</Text>
+        <Text
+          style={styles.botao}
+          onPress={() => navigation.navigate('Perfil')}
+        >LOGIN</Text>
       </TouchableOpacity>
 
       <TouchableOpacity>
@@ -92,7 +95,5 @@ const styles = StyleSheet.create({
    color: "white",
    
   }
-  
-});
 
-export default App;
+});
