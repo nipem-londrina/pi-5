@@ -30,7 +30,7 @@ export default function Login({ navigation }) {
         onChangeText={setSenha}
         value={senha}
         placeholderTextColor={'grey'}
-        placeholder='Digite a Senha'
+        placeholder='Digite a senha'
         secureTextEntry={true}>
       </TextInput>
 

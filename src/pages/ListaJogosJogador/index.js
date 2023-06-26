@@ -16,6 +16,7 @@ export default function ListaJogosJogador({ route, navigation }) {
   const auth = { 'Authorization': `Basic ` + base64.encode(`${username}:${password}`) };
 
   const [data, setData] = useState([]);
+  //setData([{ id: 4, nome: "Pokémon Singles" }, { id: 5, nome: "Pokémon VGC" }, { id: 1, nome: "Xadrez" }])
 
   useEffect(() => {
     fetch(`http://${SERVER_ADDRESS}/api/v1/jogo/me`, { headers: auth })
@@ -23,11 +24,8 @@ export default function ListaJogosJogador({ route, navigation }) {
       .then(jogos => setData(jogos))
       .catch(e => {
         console.error(e)
-        setData([{ id: 4, nome: "Pokémon Singles" }, { id: 5, nome: "Pokémon VGC" }, { id: 1, nome: "Xadrez" }])
       })
   }, [])
-
-
 
   return (
 
@@ -40,14 +38,15 @@ export default function ListaJogosJogador({ route, navigation }) {
           data={data}
           keyExtractor={item => item.id}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => navigation.navigate('Perfil')}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Perfil', { username: username, password: password, jogo: item.id })}>
               <View style={styles.itemLista}>
                 <Text style={styles.textoItemLista}>{item.nome}</Text>
               </View>
             </TouchableOpacity>
           )}
         />
-        <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('ListaJogos')}>
+        <TouchableOpacity style={styles.botao} onPress={() => { navigation.navigate('ListaJogos', route.params) }}>
           <Text style={styles.textoItemLista} >+</Text>
         </TouchableOpacity>
         <Text>{'\n'}</Text>

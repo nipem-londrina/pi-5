@@ -12,11 +12,9 @@ import {
 import { SERVER_ADDRESS } from '@env';
 
 
-
 export default function Perfil({ route }) {
    // informações que o usuário oferece
-   const { username, password } = route.params;
-   const jogo = 1;
+   const { username, password, jogo } = route.params;
 
    // coisas que precisa pra pagina funcionar
    const auth = { 'Authorization': `Basic ` + base64.encode(`${username}:${password}`) };

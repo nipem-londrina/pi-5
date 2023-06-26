@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import base64 from 'base-64'
 import {
   SafeAreaView,
   Text,
@@ -9,59 +9,45 @@ import {
   TextInput,
   TouchableOpacity
 } from 'react-native';
+import { SERVER_ADDRESS } from '@env';
 
-export default function ListaJogos() {
 
-  const data = [
-    {
-      id: 3,
-      nome: "Baseball"
-    },
-    {
-      id: 2,
-      nome: "Basquete"
-    },
-    {
-      id: 4,
-      nome: "Pokémon Singles"
-    },
-    {
-      id: 5,
-      nome: "Pokémon VGC"
-    },
-    {
-      id: 1,
-      nome: "Xadrez"
+export default function ListaJogos({ navigation, route }) {
+  const { username, password } = route.params;
+  const auth = { 'Authorization': `Basic ` + base64.encode(`${username}:${password}`) };
+
+  const [nick, setNick] = useState('');
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://${SERVER_ADDRESS}/api/v1/jogo`, { headers: auth })
+      .then(res => res.json())
+      .then(jogos => setData(jogos))
+      .catch(e => {
+        console.error(e)
+      })
+  }, [])
+
+  const handleNovoJogo = (jogo) => {
+    fetch(`http://${SERVER_ADDRESS}/api/v1/jogo/${jogo}/jogador/${nick}`, {
+      method: 'POST',
+      headers: auth
     }
-  ]
-
-  const searchFilter = (text) => {
-    if (text) {
-      const newData = masterData.filter(
-        function (item) {
-          if (item.title) {
-            const itemData = item.title.toUpperCase();
-            const textData = text.toUpperCase();
-            return itemData.indexOf(textData) > -1;
-          }
-        });
-      setFilteredData(newData);
-    } else {
-      setFilteredData(masterData);
-    }
-    setSearch(text);
-  };
+    )
+      .then(navigation.navigate('ListaJogosJogador', route.params))
+      .catch(e => console.error(e))
+  }
 
   return (
 
     <SafeAreaView style={{ flex: 1 }}>
 
       <View style={styles.container}>
-        <Text style={styles.titulo}>Informe seu Nick para o jogo selecionado</Text>
+        <Text style={styles.titulo}>Informe seu nick para o jogo selecionado</Text>
         <Text>{'\n'}</Text>
         <TextInput
           style={styles.styleBuscarJogador}
-          onChangeText={(text) => searchFilter(text)}
+          onChangeText={i => setNick(i)}
           underlineColorAndroid="transparent"
           placeholderTextColor={'grey'}
           placeholder="Nickname"
@@ -71,7 +57,7 @@ export default function ListaJogos() {
           data={data}
           keyExtractor={item => item.id}
           renderItem={({ item }) => (
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => handleNovoJogo(item.id)}>
               <View style={styles.itemLista}>
                 <Text style={styles.textoItemLista}>{item.nome}</Text>
               </View>
