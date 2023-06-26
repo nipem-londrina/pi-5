@@ -32,6 +32,7 @@ export default function ListaJogosJogador({ route, navigation }) {
         <Text style={styles.titulo}>Seus Jogos</Text>
         <Text>{'\n\n\n\n'}</Text>
         <FlatList
+          style={styles.lista}
           data={data}
           keyExtractor={item => item.id}
           renderItem={({ item }) => (
@@ -63,6 +64,9 @@ const styles = StyleSheet.create({
     color: 'white',
     marginTop: 60,
     fontWeight: '700'
+  },
+  lista: {
+    width: "80%"
   },
   itemLista: {
     marginTop: 10,

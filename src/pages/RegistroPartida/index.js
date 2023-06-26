@@ -39,7 +39,7 @@ export default function RegistroPartida({ route }) {
         onChangeText={setOponente}
         value={oponente}
         placeholderTextColor={'grey'}
-        placeholder='Informe oponente'>
+        placeholder='Oponente'>
 
       </TextInput>
 
@@ -47,9 +47,9 @@ export default function RegistroPartida({ route }) {
         selectedValue={resultado}
         style={styles.estiloDoPecker}
         onValueChange={v => setResultado(v)}>
+        <Picker.Item label="Empate" value="0" style={styles.pickerEmpate} />
         <Picker.Item label="Vitória" value="1" style={styles.pickerVitoria} />
         <Picker.Item label="Derrota" value="2" style={styles.pickerDerrota} />
-        <Picker.Item label="Empate" value="0" style={styles.pickerEmpate} />
       </Picker>
 
       <Text>{'\n\n\n'}</Text>
@@ -87,7 +87,6 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     width: "80%",
     alignItems: "center",
-    textAlign: 'center',
     margin: 10,
     color: 'white',
     borderStyle: 'solid',
