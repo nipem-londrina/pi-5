@@ -1,25 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Alert, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, TouchableOpacityBase, View } from 'react-native';
+import React, { useState } from 'react';
+import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 
 export default function Cadastro() {
-  
-  const [val, setVal] = useState(0); 
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [confrimaSenha, setConfirmaSenha] = useState('');
 
-  const onPress = () => 
-  {
-      if(senha == confrimaSenha){
-         Alert.alert("Cadastro realizado com sucesso");
-      } 
-      else{
-         Alert.alert("As senhas não são iguais");
-      }
-   }
-   
+  const onPress = () => {
+    if (senha == confrimaSenha) {
+      Alert.alert("Cadastro realizado com sucesso");
+    }
+    else {
+      Alert.alert("As senhas não são iguais");
+    }
+  }
+
 
   return (
 
@@ -34,14 +31,14 @@ export default function Cadastro() {
         placeholderTextColor={'grey'}
         placeholder='Digite seu email'>
       </TextInput>
-      
+
       <TextInput
         style={styles.entradaDeDados}
         onChangeText={setSenha}
         value={senha}
         placeholderTextColor={'grey'}
         placeholder='Digite a Senha'
-        secureTextEntry={true}>  
+        secureTextEntry={true}>
       </TextInput>
 
       <TextInput
@@ -50,7 +47,7 @@ export default function Cadastro() {
         value={confrimaSenha}
         placeholderTextColor={'grey'}
         placeholder='Confirme a Senha'
-        secureTextEntry={true}>  
+        secureTextEntry={true}>
       </TextInput>
 
       <Text>{'\n\n\n'}</Text>
@@ -67,7 +64,7 @@ export default function Cadastro() {
 
 
 const styles = StyleSheet.create({
-  titulo:{
+  titulo: {
     fontSize: 25,
     color: "white",
     fontWeight: "bold",
@@ -81,10 +78,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  entradaDeDados:{
+  entradaDeDados: {
     fontSize: 30,
     marginTop: 10,
-    //backgroundColor: 'white',
     padding: 10,
     borderRadius: 15,
     width: "80%",
@@ -97,7 +93,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
   },
 
-  botao:{
+  botao: {
     fontSize: 22,
     backgroundColor: "#f75210",
     padding: 15,
@@ -106,5 +102,5 @@ const styles = StyleSheet.create({
     width: "100%",
     fontWeight: "bold"
   }
-  
+
 });

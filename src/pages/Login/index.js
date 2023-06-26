@@ -1,11 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, TouchableOpacityBase, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 
 export default function Login({ navigation }) {
-
-  const [val, setVal] = useState(0); 
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
@@ -26,14 +24,14 @@ export default function Login({ navigation }) {
         placeholderTextColor={'grey'}
         placeholder='Digite seu email'>
       </TextInput>
-      
+
       <TextInput
         style={styles.entradaDeDados}
         onChangeText={setSenha}
         value={senha}
         placeholderTextColor={'grey'}
         placeholder='Digite a Senha'
-        secureTextEntry={true}>  
+        secureTextEntry={true}>
       </TextInput>
 
       <Text>{'\n\n\n'}</Text>
@@ -46,16 +44,16 @@ export default function Login({ navigation }) {
       </TouchableOpacity>
 
       <TouchableOpacity>
-        <Text 
+        <Text
           style={styles.cadastrese}
-          onPress={()=> navigation.navigate('Cadastro')}  
+          onPress={() => navigation.navigate('Cadastro')}
         >CADASTRE-SE</Text>
       </TouchableOpacity>
 
       <TouchableOpacity>
-        <Text 
+        <Text
           style={styles.cadastrese}
-          onPress={()=> navigation.navigate('RegistroPartida')}  
+          onPress={() => navigation.navigate('RegistroPartida')}
         >Tela Registro partida</Text>
       </TouchableOpacity>
 
@@ -67,7 +65,7 @@ export default function Login({ navigation }) {
 
 
 const styles = StyleSheet.create({
-  titulo:{
+  titulo: {
     fontSize: 40,
     marginBottom: 250,
     color: "white",
@@ -81,10 +79,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  entradaDeDados:{
+  entradaDeDados: {
     fontSize: 30,
     marginTop: 10,
-    //backgroundColor: 'white',
     padding: 10,
     borderRadius: 15,
     width: "80%",
@@ -95,10 +92,10 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     borderColor: '#f75210',
     borderWidth: 3,
-   
+
   },
 
-  botao:{
+  botao: {
     fontSize: 22,
     backgroundColor: "#f75210",
     padding: 15,
@@ -107,14 +104,14 @@ const styles = StyleSheet.create({
     width: "100%",
     fontWeight: "bold"
   },
-   
-  cadastrese:{
-   fontSize: 14,
-   padding: 15,
-   borderRadius: 30,
-   marginBottom: 10,
-   color: "white",
-   
+
+  cadastrese: {
+    fontSize: 14,
+    padding: 15,
+    borderRadius: 30,
+    marginBottom: 10,
+    color: "white",
+
   }
 
 });

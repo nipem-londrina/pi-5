@@ -67,10 +67,10 @@ export default function Perfil({ route }) {
             </TouchableOpacity>
             <Text>{''}</Text>
 
-            <TouchableOpacity style={styles.botao} onPress={()=> navigation.navigate('RegistroPartida')}>
+            <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('RegistroPartida')}>
                <Text style={styles.adicionar}>+</Text>
             </TouchableOpacity>
-           
+
 
             <FlatList
                data={data}
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
    container: {
       flex: 1,
       backgroundColor: '#1C1C1C',
-      
+
    },
    titulo: {
       fontSize: 25,
@@ -133,27 +133,27 @@ const styles = StyleSheet.create({
       margin: 5,
       borderColor: '#f75210',
       backgroundColor: "white",
-      
+
    },
-   buscarJogador:{
+   buscarJogador: {
       color: "white",
       fontWeight: "bold",
       fontSize: 18
    },
-   resultado:{
+   resultado: {
       fontSize: 18,
       color: 'white',
       fontWeight: 'bold',
       textAlign: 'center'
    },
-   pontosEstilo:{
+   pontosEstilo: {
       fontSize: 18,
       color: 'white',
       fontWeight: 'bold',
       textAlign: 'center',
       //display: 'inline-block'
    },
-   botaoBuscar:{
+   botaoBuscar: {
       marginTop: 5,
       padding: 2,
       alignItems: 'center',
@@ -161,16 +161,16 @@ const styles = StyleSheet.create({
       width: '25%',
       borderRadius: 15,
    },
-   botao:{
+   botao: {
       marginTop: 10,
       padding: 20,
       alignItems: 'center',
       backgroundColor: '#f75210',
       width: '20%',
       borderRadius: 15,
-      
+
    },
-   adicionar:{
+   adicionar: {
       color: "white",
       fontWeight: "bold",
       fontSize: 18

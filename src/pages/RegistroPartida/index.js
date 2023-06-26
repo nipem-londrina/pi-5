@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useEffect, useState } from 'react';
-import {ActivityIndicator, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, TouchableOpacityBase, View } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, TouchableOpacityBase, View } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 
 export default function RegistroPartida({ navigation }) {
 
@@ -22,17 +22,17 @@ export default function RegistroPartida({ navigation }) {
         placeholder='Informe oponente'>
 
       </TextInput>
-  
+
       <Picker
         selectedValue={resultado}
         style={styles.estiloDoPecker}
         onValueChange={(itemValue) =>
-            setResultado(itemValue)
+          setResultado(itemValue)
         }>
         <Picker.Item label="Vitória" value="1" style={styles.peeckerVitoria} />
-        <Picker.Item label="Derrota" value="2"style={styles.peeckerDerrota} />
-        <Picker.Item label="Empate" value="3"style={styles.peeckerEmpate} />
-       </Picker>
+        <Picker.Item label="Derrota" value="2" style={styles.peeckerDerrota} />
+        <Picker.Item label="Empate" value="3" style={styles.peeckerEmpate} />
+      </Picker>
 
       <Text>{'\n\n\n'}</Text>
 
@@ -50,7 +50,7 @@ export default function RegistroPartida({ navigation }) {
 
 
 const styles = StyleSheet.create({
-  titulo:{
+  titulo: {
     fontSize: 40,
     marginBottom: 250,
     color: "white",
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  entradaDeDados:{
+  entradaDeDados: {
     fontSize: 30,
     marginTop: 10,
     //backgroundColor: 'white',
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
   },
 
-  botao:{
+  botao: {
     fontSize: 22,
     backgroundColor: "#f75210",
     padding: 15,
@@ -89,8 +89,8 @@ const styles = StyleSheet.create({
     width: "100%",
     fontWeight: "bold"
   },
-   
-  estiloDoPecker:{
+
+  estiloDoPecker: {
     fontSize: 30,
     marginTop: 10,
     backgroundColor: 'white',
@@ -100,12 +100,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     textAlign: 'center',
     margin: 10,
-    
+
   },
-  peeckerDerrota:{
+  peeckerDerrota: {
     backgroundColor: '#d15c57'
   },
-  peeckerVitoria:{
+  peeckerVitoria: {
     backgroundColor: '#a8c4a2'
   }
 
