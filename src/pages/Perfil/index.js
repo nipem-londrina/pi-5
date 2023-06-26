@@ -45,6 +45,8 @@ export default function Perfil({ route, navigation }) {
             <Text style={styles.titulo}>{nick}</Text>
             <Text style={styles.titulo}>Score: {pontuacao}</Text>
             <Text>{'\n'}</Text>
+
+            {/*
             <TextInput
                style={styles.buscarJogadorImput}
                underlineColorAndroid="transparent"
@@ -53,9 +55,11 @@ export default function Perfil({ route, navigation }) {
             <TouchableOpacity style={styles.botaoBuscar} onPress={onPress}>
                <Text style={styles.buscarJogador}>Buscar</Text>
             </TouchableOpacity>
+            */}
+
             <Text>{''}</Text>
 
-            <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('RegistroPartida')}>
+            <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('RegistroPartida', route.params)}>
                <Text style={styles.adicionar}>+</Text>
             </TouchableOpacity>
 
