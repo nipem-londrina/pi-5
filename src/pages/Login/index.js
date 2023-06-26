@@ -4,7 +4,7 @@ import { ActivityIndicator, FlatList, StyleSheet, Text, TextInput, TouchableOpac
 
 
 export default function Login({ navigation }) {
-  
+
   const [val, setVal] = useState(0); 
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
@@ -35,12 +35,15 @@ export default function Login({ navigation }) {
       <TouchableOpacity>
         <Text
           style={styles.botao}
-          onPress={() => navigation.navigate('Perfil')}
+          onPress={() => navigation.navigate('ListaJogosJogador')}
         >LOGIN</Text>
       </TouchableOpacity>
 
       <TouchableOpacity>
-        <Text style={styles.cadastrese}>CADASTRE-SE</Text>
+        <Text 
+          style={styles.cadastrese}
+          onPress={()=> navigation.navigate('Cadastro')}  
+        >CADASTRE-SE</Text>
       </TouchableOpacity>
       <StatusBar style="auto" />
     </View>

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Alert, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, TouchableOpacityBase, View } from 'react-native';
 
 
-const App = () => {
+export default function Cadastro() {
   
   const [val, setVal] = useState(0); 
   const [email, setEmail] = useState('');
@@ -61,7 +61,7 @@ const App = () => {
   );
 }
 
-export default App;
+
 
 const styles = StyleSheet.create({
   titulo:{

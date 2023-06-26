@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 
 
-export default function App() {
+export default function ListaJogosJogador({navigation}) {
    
     const data = [
         {
@@ -31,7 +31,7 @@ export default function App() {
         }
      ]
      
-   const onPress = () => {};
+   
 
    return (
 
@@ -44,15 +44,15 @@ export default function App() {
                data={data}
                keyExtractor={item => item.id}
                renderItem={({ item }) => (
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={()=> navigation.navigate('Perfil')}>
                      <View style={styles.itemLista}>
                         <Text style={styles.textoItemLista}>{item.nome}</Text>
                      </View>
                   </TouchableOpacity>
         )}
       />
-         <TouchableOpacity style={styles.botao} onPress={onPress}>
-            <Text style={styles.textoItemLista}>+</Text>
+         <TouchableOpacity style={styles.botao} onPress={()=> navigation.navigate('ListaJogos')}> 
+            <Text style={styles.textoItemLista} >+</Text>
          </TouchableOpacity>
          <Text>{'\n'}</Text>
          </View>
@@ -200,4 +200,5 @@ const styles = StyleSheet.create({
   },
 });
  */
+
 /* export default App; */

@@ -12,7 +12,7 @@ import {
    TouchableOpacity
 } from 'react-native';
 
-export default function App() {
+export default function ListaJogos() {
    
     const data = [
         {
@@ -59,13 +59,13 @@ export default function App() {
       <SafeAreaView style={{ flex: 1 }}>
 
          <View style={styles.container}>
-            <Text style={styles.titulo}>Jogos</Text>
+            <Text style={styles.titulo}>Informe seu Nick para o jogo selecionado</Text>
             <Text>{'\n'}</Text>
             <TextInput
                style={styles.styleBuscarJogo}
                onChangeText={(text) => searchFilter(text)}
                underlineColorAndroid="transparent"
-               placeholder="Buscar Jogo"
+               placeholder="Nickname"
             />
             <Text>{'\n\n'}</Text>
             <FlatList
@@ -94,7 +94,8 @@ const styles = StyleSheet.create({
       fontSize: 25,
       color: 'white',
       marginTop: 60,
-      fontWeight: '700'
+      fontWeight: '700',
+      textAlign: 'center'
    },
    itemLista: {
       marginTop: 10,
