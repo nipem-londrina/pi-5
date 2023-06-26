@@ -15,12 +15,9 @@ import {
 import { SERVER_ADDRESS } from '@env';
 
 
-export default function ListaJogosJogador({ route }) {
+export default function ListaJogosJogador({ route,navigation }) {
   const { username, password } = route.params;
   const auth = { 'Authorization': `Basic ` + base64.encode(`${username}:${password}`) };
-  console.log(username)
-  console.log(password)
-  console.log(auth.Authorization)
 
   const [data, setData] = useState([]);
   

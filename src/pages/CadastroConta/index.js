@@ -31,6 +31,7 @@ export default function Cadastro() {
         style={styles.entradaDeDados}
         onChangeText={setEmail}
         value={email}
+        placeholderTextColor={'grey'}
         placeholder='Digite seu email'>
       </TextInput>
       
@@ -38,6 +39,7 @@ export default function Cadastro() {
         style={styles.entradaDeDados}
         onChangeText={setSenha}
         value={senha}
+        placeholderTextColor={'grey'}
         placeholder='Digite a Senha'
         secureTextEntry={true}>  
       </TextInput>
@@ -46,6 +48,7 @@ export default function Cadastro() {
         style={styles.entradaDeDados}
         onChangeText={setConfirmaSenha}
         value={confrimaSenha}
+        placeholderTextColor={'grey'}
         placeholder='Confirme a Senha'
         secureTextEntry={true}>  
       </TextInput>
@@ -81,19 +84,17 @@ const styles = StyleSheet.create({
   entradaDeDados:{
     fontSize: 30,
     marginTop: 10,
-    backgroundColor: 'white',
+    //backgroundColor: 'white',
     padding: 10,
     borderRadius: 15,
     width: "80%",
     alignItems: "center",
     textAlign: 'center',
     margin: 10,
-   
-  },
-
-  contador:{
-    fontSize: 32,
-    fontWeight: 'bold',
+    color: 'white',
+    borderStyle: 'solid',
+    borderColor: '#f75210',
+    borderWidth: 3,
   },
 
   botao:{
@@ -104,15 +105,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     width: "100%",
     fontWeight: "bold"
-  },
-   
-  cadastrese:{
-   fontSize: 14,
-   padding: 15,
-   borderRadius: 30,
-   marginBottom: 10,
-   color: "white",
-   
   }
   
 });

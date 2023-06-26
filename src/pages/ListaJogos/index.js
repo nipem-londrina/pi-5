@@ -62,9 +62,10 @@ export default function ListaJogos() {
             <Text style={styles.titulo}>Informe seu Nick para o jogo selecionado</Text>
             <Text>{'\n'}</Text>
             <TextInput
-               style={styles.styleBuscarJogo}
+               style={styles.styleBuscarJogador}
                onChangeText={(text) => searchFilter(text)}
                underlineColorAndroid="transparent"
+               placeholderTextColor={'grey'}
                placeholder="Nickname"
             />
             <Text>{'\n\n'}</Text>
@@ -110,14 +111,18 @@ const styles = StyleSheet.create({
       color: 'white',
       fontWeight: 'bold'
    },
-   styleBuscarJogo: {
+   styleBuscarJogador: {
       height: 40,
       borderWidth: 1,
       paddingLeft: 20,
       paddingRight: 20,
       margin: 5,
       borderColor: '#f75210',
-      backgroundColor: "white"
+      //backgroundColor: "white",
+      color: 'white',
+      borderStyle: 'solid',
+      borderWidth: 3,
+      borderRadius: 15
    }
 });
 

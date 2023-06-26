@@ -23,6 +23,7 @@ export default function Login({ navigation }) {
         style={styles.entradaDeDados}
         onChangeText={setEmail}
         value={email}
+        placeholderTextColor={'grey'}
         placeholder='Digite seu email'>
       </TextInput>
       
@@ -30,6 +31,7 @@ export default function Login({ navigation }) {
         style={styles.entradaDeDados}
         onChangeText={setSenha}
         value={senha}
+        placeholderTextColor={'grey'}
         placeholder='Digite a Senha'
         secureTextEntry={true}>  
       </TextInput>
@@ -49,6 +51,14 @@ export default function Login({ navigation }) {
           onPress={()=> navigation.navigate('Cadastro')}  
         >CADASTRE-SE</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity>
+        <Text 
+          style={styles.cadastrese}
+          onPress={()=> navigation.navigate('RegistroPartida')}  
+        >Tela Registro partida</Text>
+      </TouchableOpacity>
+
       <StatusBar style="auto" />
     </View>
   );
@@ -74,13 +84,17 @@ const styles = StyleSheet.create({
   entradaDeDados:{
     fontSize: 30,
     marginTop: 10,
-    backgroundColor: 'white',
+    //backgroundColor: 'white',
     padding: 10,
     borderRadius: 15,
     width: "80%",
     alignItems: "center",
     textAlign: 'center',
     margin: 10,
+    color: 'white',
+    borderStyle: 'solid',
+    borderColor: '#f75210',
+    borderWidth: 3,
    
   },
 

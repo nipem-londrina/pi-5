@@ -67,7 +67,7 @@ export default function Perfil({ route }) {
             </TouchableOpacity>
             <Text>{''}</Text>
 
-            <TouchableOpacity style={styles.botao} onPress={onPress}>
+            <TouchableOpacity style={styles.botao} onPress={()=> navigation.navigate('RegistroPartida')}>
                <Text style={styles.adicionar}>+</Text>
             </TouchableOpacity>
            
