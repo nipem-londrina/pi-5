@@ -16,10 +16,15 @@ public interface JogadorRepository extends CrudRepository<Jogador, Integer> {
 
     List<Jogador> findAllByIdjogoAndNomeContainingIgnoreCaseOrderByNome(int idJogo, String nome);
 
-
     @Query("SELECT id FROM Jogador WHERE idusuario = ?1 AND idjogo = ?2")
     int findIdByUsuarioAndJogo(int idUsuario, int idJogo);
 
     @Query("SELECT elo FROM Jogador where id = ?1")
     double findEloById(int id);
+
+    Jogador findAllByIdjogoAndNome(int idjogo, String nome);
+
+    Jogador findAllByIdusuarioAndIdjogo(int idusuario, int idjogo);
+
+    Jogador findAllByNomeAndIdjogo(String nome, int idjogo);
 }

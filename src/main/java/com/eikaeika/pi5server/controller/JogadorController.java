@@ -21,16 +21,14 @@ public class JogadorController {
     private JogadorRepository repository;
     @Autowired
     private UsuarioRepository usuarioRepository;
-    @Autowired
-    private JogadorRepository jogadorRepository;
 
-    @PostMapping
-    Jogador inscrever(@PathVariable int jogo, @RequestBody InscreverDto dto) {
+    @PostMapping("{nome}")
+    Jogador inscrever(@PathVariable int jogo, @PathVariable String nome) {
         return repository.save(new Jogador(
                 // essa linha pega o id do usuario logado
                 usuarioRepository.findByLogin(SecurityContextHolder.getContext().getAuthentication().getName()).getId(),
                 jogo,
-                dto.getNome(),
+                nome,
                 1000
         ));
     }
@@ -38,7 +36,7 @@ public class JogadorController {
     @GetMapping("me")
     Jogador meuPerfil(@PathVariable int jogo) {
         // essa linha pega o id do jogador logado
-        int jogadorId = jogadorRepository.findIdByUsuarioAndJogo(usuarioRepository.findIdByLogin(SecurityContextHolder.getContext().getAuthentication().getName()), jogo);
+        int jogadorId = repository.findIdByUsuarioAndJogo(usuarioRepository.findIdByLogin(SecurityContextHolder.getContext().getAuthentication().getName()), jogo);
         return perfil(jogo, jogadorId);
     }
 
@@ -52,11 +50,5 @@ public class JogadorController {
     List<Jogador> find(@PathVariable int jogo, @RequestParam(required = false) String nome) {
         if (nome == null) return repository.findAllByIdjogoOrderByNome(jogo);
         return repository.findAllByIdjogoAndNomeContainingIgnoreCaseOrderByNome(jogo, nome);
-    }
-
-    @Getter
-    @Setter
-    private static class InscreverDto {
-        private String nome;
     }
 }

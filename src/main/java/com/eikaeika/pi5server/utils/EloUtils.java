@@ -5,16 +5,15 @@ import com.eikaeika.pi5server.model.Partida;
 /**
  * @author Erich Knoor
  */
-public class EloUtils {
+public abstract class EloUtils {
     public static final int FATOR_ESCALA = 32;
     public static final int FATOR_TRANSFORMACAO = 400;
 
-    public double calcExpectativa(double eloJogador, double eloAdversario) {
+    public static double calcExpectativa(double eloJogador, double eloAdversario) {
         return 1 / (1 + Math.pow(10, (eloAdversario - eloJogador) / FATOR_TRANSFORMACAO));
     }
 
-
-    public void atualizarElo(Partida partida) {
+    public static void atualizarElo(Partida partida) {
         final int UM_GANHOU = 1;
         final int DOIS_GANHOU = 2;
         final int EMPATE = 0;
