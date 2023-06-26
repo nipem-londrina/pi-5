@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import base64 from 'base-64';
 import {
    SafeAreaView,
    Text,
@@ -12,24 +12,27 @@ import {
    Touchable,
    TouchableOpacity
 } from 'react-native';
+import { SERVER_ADDRESS } from '@env';
 
 
-export default function ListaJogosJogador({navigation}) {
-   
-    const data = [
-        {
-           id: 4,
-           nome: "Pokémon Singles"
-        },
-        {
-           id: 5,
-           nome: "Pokémon VGC"
-        },
-        {
-           id: 1,
-           nome: "Xadrez"
-        }
-     ]
+export default function ListaJogosJogador({ route }) {
+  const { username, password } = route.params;
+  const auth = { 'Authorization': `Basic ` + base64.encode(`${username}:${password}`) };
+  console.log(username)
+  console.log(password)
+  console.log(auth.Authorization)
+
+  const [data, setData] = useState([]);
+  
+  useEffect(() => {
+    fetch(`http://${SERVER_ADDRESS}/api/v1/jogo/me`, { headers: auth })
+    .then(res => res.json())
+    .then(jogos => setData(jogos))
+    .catch(e => {
+      console.error(e)
+      setData([{ id: 4, nome: "Pokémon Singles" }, { id: 5, nome: "Pokémon VGC" }, { id: 1, nome: "Xadrez" }])
+    })
+  }, [])
      
    
 

@@ -13,10 +13,9 @@ import { SERVER_ADDRESS } from '@env';
 
 
 
-export default function Perfil() {
+export default function Perfil({ route }) {
    // informações que o usuário oferece
-   const username = "erich@email.com"
-   const password = "coisa"
+   const { username, password } = route.params;
    const jogo = 1;
 
    // coisas que precisa pra pagina funcionar
