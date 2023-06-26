@@ -12,20 +12,15 @@ import {
 import { SERVER_ADDRESS } from '@env';
 
 
-export default function Perfil({ route }) {
-   // informações que o usuário oferece
+export default function Perfil({ route, navigation }) {
    const { username, password, jogo } = route.params;
-
-   // coisas que precisa pra pagina funcionar
    const auth = { 'Authorization': `Basic ` + base64.encode(`${username}:${password}`) };
    const onPress = () => { };
 
-   // variaveis da tela
    const [nick, setNick] = useState('');
    const [pontuacao, setPontuacao] = useState('');
    const [data, setData] = useState([]);
 
-   // chamada ao servidor
    useEffect(() => {
       fetch(`http://${SERVER_ADDRESS}/api/v1/jogo/${jogo}/jogador/me`, { headers: auth })
          .then(res => res.json())
@@ -39,14 +34,9 @@ export default function Perfil({ route }) {
          .then(partidas => setData(partidas))
          .catch(e => {
             console.error(e)
-            // informações teste que aparecem se não houver conexão
-            setNick("ChicoGameplay")
-            setPontuacao(1200)
-            setData([{ id: 4, jogador: "ChicoGamer", adversario: "Erich Knoor", resultado: "Derrota", jogadorElo: 1000.0, adversarioElo: 1000.0 }, { id: 8, jogador: "ChicoGamer", adversario: "Erich Knoor", resultado: "Derrota", jogadorElo: 900.0, adversarioElo: 1100.0 }, { id: 15, jogador: "ChicoGamer", adversario: "Erich Knoor", resultado: "Vitória", jogadorElo: 1000.0, adversarioElo: 1000.0 }, { id: 16, jogador: "ChicoGamer", adversario: "Erich Knoor", resultado: "Vitória", jogadorElo: 1100.0, adversarioElo: 900.0 }, { id: 24, jogador: "ChicoGamer", adversario: "Erich Knoor", resultado: "Derrota", jogadorElo: 1000.0, adversarioElo: 1000.0 }])
          })
    }, []);
 
-   // tela
    return (
 
       <SafeAreaView style={{ flex: 1 }}>
@@ -113,9 +103,7 @@ const styles = StyleSheet.create({
    jogador1Estilo: {
       fontSize: 18,
       color: 'white',
-      fontWeight: 'bold',
-      //textAlign: 'left',
-      //display: 'flex'
+      fontWeight: 'bold'
    },
    jogador2Estilo: {
       fontSize: 18,
@@ -148,8 +136,7 @@ const styles = StyleSheet.create({
       fontSize: 18,
       color: 'white',
       fontWeight: 'bold',
-      textAlign: 'center',
-      //display: 'inline-block'
+      textAlign: 'center'
    },
    botaoBuscar: {
       marginTop: 5,

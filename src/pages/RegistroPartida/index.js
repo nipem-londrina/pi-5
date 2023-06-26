@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, TouchableOpacityBase, View } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
-export default function RegistroPartida({ navigation }) {
+export default function RegistroPartida({ route }) {
+  const { username, password, jogo } = route.params;
+  const auth = { 'Authorization': `Basic ` + base64.encode(`${username}:${password}`) };
 
   const [oponente, setOponente] = useState('');
   const [resultado, setResultado] = useState('');
@@ -26,12 +28,10 @@ export default function RegistroPartida({ navigation }) {
       <Picker
         selectedValue={resultado}
         style={styles.estiloDoPecker}
-        onValueChange={(itemValue) =>
-          setResultado(itemValue)
-        }>
-        <Picker.Item label="Vitória" value="1" style={styles.peeckerVitoria} />
-        <Picker.Item label="Derrota" value="2" style={styles.peeckerDerrota} />
-        <Picker.Item label="Empate" value="3" style={styles.peeckerEmpate} />
+        onValueChange={v => setResultado(v)}>
+        <Picker.Item label="Vitória" value="1" style={styles.pickerVitoria} />
+        <Picker.Item label="Derrota" value="2" style={styles.pickerDerrota} />
+        <Picker.Item label="Empate" value="0" style={styles.pickerEmpate} />
       </Picker>
 
       <Text>{'\n\n\n'}</Text>
@@ -102,10 +102,10 @@ const styles = StyleSheet.create({
     margin: 10,
 
   },
-  peeckerDerrota: {
+  pickerDerrota: {
     backgroundColor: '#d15c57'
   },
-  peeckerVitoria: {
+  pickerVitoria: {
     backgroundColor: '#a8c4a2'
   }
 

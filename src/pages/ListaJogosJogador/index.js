@@ -16,15 +16,12 @@ export default function ListaJogosJogador({ route, navigation }) {
   const auth = { 'Authorization': `Basic ` + base64.encode(`${username}:${password}`) };
 
   const [data, setData] = useState([]);
-  //setData([{ id: 4, nome: "Pokémon Singles" }, { id: 5, nome: "Pokémon VGC" }, { id: 1, nome: "Xadrez" }])
-
+  
   useEffect(() => {
     fetch(`http://${SERVER_ADDRESS}/api/v1/jogo/me`, { headers: auth })
       .then(res => res.json())
       .then(jogos => setData(jogos))
-      .catch(e => {
-        console.error(e)
-      })
+      .catch(e => console.error(e))
   }, [])
 
   return (

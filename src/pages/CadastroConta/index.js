@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { SERVER_ADDRESS } from '@env';
 
 
 export default function Cadastro() {
@@ -9,12 +10,24 @@ export default function Cadastro() {
   const [confrimaSenha, setConfirmaSenha] = useState('');
 
   const onPress = () => {
-    if (senha == confrimaSenha) {
-      Alert.alert("Cadastro realizado com sucesso");
-    }
-    else {
+    if (senha != confrimaSenha) {
       Alert.alert("As senhas não são iguais");
+      return
     }
+
+    const body = {
+      email: email,
+      senha: senha,
+      confirmacao: confrimaSenha
+    }
+
+    fetch(`http://${SERVER_ADDRESS}/cadastrar`, {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    })
+      .then(Alert.alert("Cadastro realizado com sucesso"))
+      .catch(e => console.error(e))
   }
 
 

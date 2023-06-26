@@ -32,9 +32,8 @@ export default function ListaJogos({ navigation, route }) {
     fetch(`http://${SERVER_ADDRESS}/api/v1/jogo/${jogo}/jogador/${nick}`, {
       method: 'POST',
       headers: auth
-    }
-    )
-      .then(navigation.navigate('ListaJogosJogador', route.params))
+    })
+      .then(Alert.alert("Jogo adicionado à sua conta"))
       .catch(e => console.error(e))
   }
 
