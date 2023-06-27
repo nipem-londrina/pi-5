@@ -50,13 +50,6 @@ export default function Login({ navigation }) {
         >CADASTRE-SE</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity>
-        <Text
-          style={styles.cadastrese}
-          onPress={() => navigation.navigate('RegistroPartida')}
-        >Tela Registro partida</Text>
-      </TouchableOpacity>
-
       <StatusBar style="auto" />
     </View>
   );
